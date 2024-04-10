@@ -1,11 +1,12 @@
 import "./App.css";
-import { LearningForm, Toolbar } from "./components";
+import { LearningForm, LearningPage, Toolbar } from "./components";
 
 function App() {
   return (
     <div className="wrapper">
       <Toolbar />
       <LearningForm />
+      <LearningPage />
     </div>
   );
 }
