@@ -1,12 +1,15 @@
 import os
 import json
+from dotenv import load_dotenv
 from flask import Flask, request
 from langchain.prompts import PromptTemplate
-from langchain.llms import openai
+from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
 from templates.prompt import PROMPT_TEMPLATE
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/', methods=['GET'])
@@ -28,14 +31,18 @@ def generate_exercise():
         level: string
     }
     """
-    topic = request.json['topic']
+    if 'topic' in request.json:
+        topic = request.json['topic']
+    else:
+        topic = 'General English'
+
     level = request.json['level']
-    print(f"Generating exercise for topic {topic} and level {level}")
     prompt = PromptTemplate(input_variables=["topic", "level"],
                             template=PROMPT_TEMPLATE)
     chain = LLMChain(prompt=prompt,
-                     llm=openai.OpenAI(
-                         openai_api_key=os.environ.get('OPENAI_API_KEY')
+                     llm=ChatOpenAI(
+                         openai_api_key=os.environ.get('OPENAI_API_KEY'),
+                         model='gpt-4',
                          ))
     response = chain.run(topic=topic, level=level)
     output = json.loads(response)
@@ -43,4 +50,5 @@ def generate_exercise():
 
 
 if __name__ == '__main__':
+    load_dotenv()
     app.run(host='0,0,0,0', port=8000)

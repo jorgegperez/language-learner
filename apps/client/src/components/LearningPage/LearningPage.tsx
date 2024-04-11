@@ -1,14 +1,33 @@
+import { Spin } from "antd";
 import { useLearningForm } from "../../hooks";
-import { Wrapper } from "./LearningPage.styles";
+import {
+  ExerciseStatementWrapper,
+  SpinnerWrapper,
+  TitleWrapper,
+  Wrapper,
+} from "./LearningPage.styles";
+import { AnswerInput } from "./AnswerInput";
 
 export const LearningPage = () => {
-  const { step } = useLearningForm();
+  const { step, exercise } = useLearningForm();
 
   if (step !== 1) return null;
-  
+
+  const { english } = exercise ?? {};
+
   return (
     <Wrapper>
-      <h1>Learning Page</h1>
+      <TitleWrapper>Translate the following sentence</TitleWrapper>
+      {!english ? (
+        <SpinnerWrapper>
+          <Spin />
+        </SpinnerWrapper>
+      ) : (
+        <>
+          <ExerciseStatementWrapper>{english}</ExerciseStatementWrapper>
+          <AnswerInput />
+        </>
+      )}
     </Wrapper>
   );
 };

@@ -1,11 +1,12 @@
 import { Button, Form, Input, Select } from "antd";
-import { useLearningForm } from "../../hooks";
+import { useGenerateExercise, useLearningForm } from "../../hooks";
 import { Wrapper } from "./LearningForm.styles";
 import { ELevel, IFormData } from "../../common";
 import { useMemo } from "react";
 
 export const LearningForm = () => {
-  const { step, setStep, setFormData } = useLearningForm();
+  const { step, setStep } = useLearningForm();
+  const { generateExercise } = useGenerateExercise();
   const [form] = Form.useForm();
 
   const options = useMemo(
@@ -20,8 +21,7 @@ export const LearningForm = () => {
   if (step !== 0) return null;
 
   const handleOnFinish = (values: IFormData) => {
-    const { level, topic } = values;
-    setFormData(level, topic);
+    generateExercise(values);
     setStep(1);
   };
 

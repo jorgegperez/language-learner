@@ -1,10 +1,9 @@
 import { create } from "zustand";
-import { ELevel } from "../common";
+import { IExercise } from "../common";
 
 interface IStore {
-  topic?: string;
-  level?: ELevel;
-  setFormData: (level: ELevel, topic?: string) => void;
+  exercise?: IExercise;
+  setExercise: (exercise?: IExercise) => void;
   step: number;
   setStep: (step: number) => void;
 }
@@ -12,11 +11,10 @@ interface IStore {
 const store = create<IStore>((set) => ({
   step: 0,
   setStep: (step) => set({ step }),
-  setFormData: (level, topic) => set({ level, topic }),
+  setExercise: (exercise) => set({ exercise }),
 }));
 
 export const useLearningForm = () => {
-  const { topic, step, setStep, level, setFormData } = store();
-
-  return { topic, step, setStep, level, setFormData };
+  const { step, setStep, exercise, setExercise } = store();
+  return { step, setStep, exercise, setExercise };
 };
