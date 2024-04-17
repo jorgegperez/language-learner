@@ -1,5 +1,10 @@
 # Lenguage learner
 
+
+https://github.com/jorgegperez/language-learner/assets/120279442/d99b2b1e-2053-4668-8ab4-0dac438b3fdc
+
+
+
 ## Description
 On this project I will create a web app that will help people learn Spanish.
 Inspired on Duolingo teaching style I will try to come up with a simple and fun way to learn.
