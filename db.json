@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "points": 32,
+      "id": "1",
+      "name": "John Doe",
+      "lives": 99
+    }
+  ]
+}

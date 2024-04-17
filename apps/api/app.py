@@ -34,7 +34,7 @@ def generate_exercise():
     if 'topic' in request.json:
         topic = request.json['topic']
     else:
-        topic = 'General English'
+        topic = 'Random Topic'
 
     level = request.json['level']
     prompt = PromptTemplate(input_variables=["topic", "level"],
@@ -43,10 +43,11 @@ def generate_exercise():
                      llm=ChatOpenAI(
                          openai_api_key=os.environ.get('OPENAI_API_KEY'),
                          model='gpt-4',
+                         temperature=0.7,
                          ))
     response = chain.run(topic=topic, level=level)
-    output = json.loads(response)
-    return output
+    exercise = json.loads(response)
+    return exercise
 
 
 if __name__ == '__main__':

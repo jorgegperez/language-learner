@@ -16,3 +16,29 @@ export const TitleWrapper = styled.div`
   font-weight: 600;
   color: white;
 `;
+
+export const InfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
+export const PointsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: gold;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 8px;
+`;
+
+export const LivesWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: red;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 8px;
+`;

@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   align-items: flex-start;
   text-align: left;
   padding: 24px;
-  gap: 24px;
+  gap: 32px;
 `;
 
 export const TitleWrapper = styled.div`

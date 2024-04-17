@@ -1,3 +1,4 @@
 export * from "./useLearningForm";
-export * from "./useUserPoints";
+export * from "./useProfile";
 export * from "./useGenerateExercise";
+export * from './useCorrectExercise';
